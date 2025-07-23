@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" width="200" alt="Grow Tent Monitor logo">
+</p>
+
 # Grow Tent Monitor
 
 A lightweight Raspberry Pi-based monitoring system for capturing and displaying live images of an indoor grow tent. Snapshots are taken at regular intervals using a USB webcam and displayed via a local Flask web dashboard.
