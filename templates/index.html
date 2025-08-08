@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+            border-right: 1px solid black;
+            width: auto;
+            margin:0 auto;
+            text-align:center;
+        }
+    </style>
   <title>GrowCam Dashboard</title>
 </head>
 <body>
-  <h1>Latest Snapshots</h1>
-  {% for img in images %}
-    <div>
-      <p>{{ img }}</p>
-      <img src="{{ url_for('static', filename='snapshots/' + img) }}" width="500">
+    <div class="row">
+        <div class="column">
+            <h1>Latest Snapshots</h1>
+                {% for img in images %}
+                <div>
+                    <p>{{ img }}</p>
+                    <img src="{{ url_for('static', filename='snapshots/' + img) }}" width="500">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="column">
+            <h1>Current Snapshot</h1>
+                <div>
+                    <p>Snapshot from now!</p>
+                    <img src="{{ url_for('static', filename='current_snapshot/current_snapshot.jpg') }}" width="500">
+                </div>
+        </div>
     </div>
-    <hr>
-  {% endfor %}
 </body>
 </html>
