@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GrowCam Dashboard</title>
+</head>
+<body>
+  <h1>Latest Snapshots</h1>
+  {% for img in images %}
+    <div>
+      <p>{{ img }}</p>
+      <img src="{{ url_for('static', filename='snapshots/' + img) }}" width="500">
+    </div>
+    <hr>
+  {% endfor %}
+</body>
+</html>
