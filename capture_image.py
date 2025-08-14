@@ -55,9 +55,8 @@ if ret:
         frames.append(end_frame)
     frame_one = frames[0]
     frame_one.save("/home/lane/grow-tent-monitor/static/current_timelapse.gif", format="GIF", append_images=frames,
-               save_all=True, duration=150, loop=0)
+               save_all=True, duration=175, loop=0)
     print(f"Saved timelapse gif")
 else:
     print("Failed to grab frame")
 cam.release()
-
