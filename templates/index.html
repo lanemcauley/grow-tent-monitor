@@ -9,9 +9,13 @@
         .column {
             flex: 50%;
             border-right: 1px solid black;
-            width: auto;
+            width: 50%;
             margin:0 auto;
             text-align:center;
+        }
+
+        .column img {
+            width: 100%;
         }
     </style>
   <title>GrowCam Dashboard</title>
@@ -23,15 +27,19 @@
                 {% for img in images %}
                 <div>
                     <p>{{ img }}</p>
-                    <img src="{{ url_for('static', filename='snapshots/' + img) }}" width="500">
+                    <img src="{{ url_for('static', filename='snapshots/' + img) }}">
                 </div>
             {% endfor %}
         </div>
         <div class="column">
-            <h1>Current Snapshot</h1>
+            <h1>Current Snapshot and Timelapse</h1>
                 <div>
                     <p>Snapshot from now!</p>
-                    <img src="{{ url_for('static', filename='current_snapshot/current_snapshot.jpg') }}" width="500">
+                    <img src="{{ url_for('static', filename='current_snapshot/current_snapshot.jpg') }}">
+                </div>
+                <div>
+                    <p>Timelapse so far!</p>
+                    <img src="{{ url_for('static', filename='current_timelapse.gif') }}">
                 </div>
         </div>
     </div>
