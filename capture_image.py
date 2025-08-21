@@ -2,16 +2,10 @@
 # capture_image.py
 import cv2
 import datetime
-import glob
+import create_mp4_timelapse
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-
-def get_date_from_filename(filename):
-    """Extracts the date from the filename and returns a datetime object."""
-    # Example: Assuming date is in 'YYYY-MM-DD' format and is before the extension
-    date_str = filename.split('/snapshot_')[-1].split('.')[0]
-    return datetime.datetime.strptime(date_str, '%Y-%m-%d_%H:%M:%S')
 
 cam = cv2.VideoCapture(0)
 
@@ -43,20 +37,7 @@ if ret:
     img.save(filename)
     print("Saved", filename)
 
-    image_filenames = glob.glob(f"/home/lane/grow-tent-monitor/static/snapshots/*.jpg")
-    image_filenames = sorted(image_filenames, key=get_date_from_filename)
-
-    frames = [Image.open(image) for image in image_filenames]
-    start_frame = frames[0]
-    end_frame = frames[-1]
-    for x in range(10):
-        frames.insert(0, start_frame)
-    for x in range(10):
-        frames.append(end_frame)
-    frame_one = frames[0]
-    frame_one.save("/home/lane/grow-tent-monitor/static/current_timelapse.gif", format="GIF", append_images=frames,
-               save_all=True, duration=175, loop=0)
-    print(f"Saved timelapse gif")
+    create_mp4_timelapse.create_mp4_from_jpgs("/home/lane/grow-tent-monitor/static/snapshots", "/home/lane/grow-tent-monitor/static/current_timelapse.mp4", fps=5)
 else:
     print("Failed to grab frame")
 cam.release()

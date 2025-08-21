@@ -17,6 +17,10 @@
         .column img {
             width: 100%;
         }
+
+        .column video {
+            width: 100%;
+        }
     </style>
   <title>GrowCam Dashboard</title>
 </head>
@@ -39,7 +43,9 @@
                 </div>
                 <div>
                     <p>Timelapse so far!</p>
-                    <img src="{{ url_for('static', filename='current_timelapse.gif') }}">
+                    <video controls="controls">
+                        <source src="{{ url_for('static', filename='current_timelapse.mp4') }}" type="video/mp4">
+                    </video>
                 </div>
         </div>
     </div>
